@@ -1,5 +1,6 @@
 # micronaut-with-java
 
+This is a POC repo that contains multi modules.
 
 ## mn-kafka
 It is build from Micronaut template (Intellij or micronaut.io/launch) with

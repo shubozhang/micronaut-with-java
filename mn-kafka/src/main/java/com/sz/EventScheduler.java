@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Singleton
-@Requires(notEnv = Environment.TEST)
+@Requires(notEnv = Environment.TEST)  // this schedule won't run in test environment
 public class EventScheduler {
 
     private static final Logger LOG = LoggerFactory.getLogger(EventScheduler.class);

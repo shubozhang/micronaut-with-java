@@ -1,0 +1,6 @@
+applicationType: function
+defaultPackage: com.sz
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [ annotation-api, app-name, aws-lambda, gradle, junit, kotlin, logback, readme, shade, yaml ]
