@@ -13,7 +13,9 @@
 ![Alt text](../images/app.png)
 * Run with docker native image (start time 24 ms)
   * at local, create `app.stack.yml` to link `mn-kafka` and `kafka` server
-  * `docker stack deploy -c app.stack.yml mn-kafka-stack`
+  * start stack: `docker stack deploy -c app.stack.yml mn-kafka-stack`
+  * down stack: `docker stack down mn-kafka-stack`  
+  * or remove stack: `docker stack rm mn-kafka-stack`  
   * see app logs: `docker service logs -f mn-kafka-stack_mn-kafka`
-
+  * see stats: `docker stats`
   ![Alt text](../images/native-image.png)
