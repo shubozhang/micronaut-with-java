@@ -2,7 +2,7 @@
 
 This is a POC repo that contains multi modules.
 
-## mn-kafka
+## mn-kafka module (GraalVM)
 It is build from Micronaut template (Intellij or micronaut.io/launch) with
 * version: 2.3.3
 * language: Java 11
@@ -16,3 +16,21 @@ It is build from Micronaut template (Intellij or micronaut.io/launch) with
     * stop `docker-compose stop`
   
 * UI console (Kafka Development Environment): `localhost:3030`
+
+
+
+
+
+## Micronaut 2.3.3 Documentation
+
+- [User Guide](https://docs.micronaut.io/2.3.3/guide/index.html)
+- [API Reference](https://docs.micronaut.io/2.3.3/api/index.html)
+- [Configuration Reference](https://docs.micronaut.io/2.3.3/guide/configurationreference.html)
+- [Micronaut Guides](https://guides.micronaut.io/index.html)
+
+---
+
+## Feature kafka documentation
+
+- [Micronaut Kafka Messaging documentation](https://micronaut-projects.github.io/micronaut-kafka/latest/guide/index.html)
+

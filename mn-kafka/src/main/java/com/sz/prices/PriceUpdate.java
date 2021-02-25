@@ -1,7 +1,6 @@
 package com.sz.prices;
 
 import io.micronaut.core.annotation.Introspected;
-
 import java.math.BigDecimal;
 
 @Introspected

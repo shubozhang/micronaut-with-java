@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  mn-kafka:
+    image: mn-kafka:latest
+    networks:
+      hostnet: {}
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: localhost:9092
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+networks:
+  hostnet:
+    external: true
+    name: host

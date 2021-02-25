@@ -1,8 +1,8 @@
 package com.sz.quotes.external;
 
-
 import io.micronaut.core.annotation.Introspected;
 import java.math.BigDecimal;
+
 
 @Introspected
 public class ExternalQuote {
@@ -10,9 +10,6 @@ public class ExternalQuote {
     private String symbol;
     private BigDecimal lastPrice;
     private BigDecimal volume;
-
-    public ExternalQuote() {
-    }
 
     public ExternalQuote(final String symbol, final BigDecimal lastPrice, final BigDecimal volume) {
         this.symbol = symbol;
