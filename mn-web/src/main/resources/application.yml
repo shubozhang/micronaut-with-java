@@ -1,0 +1,19 @@
+micronaut:
+  application:
+    name: mnWeb
+
+  server:
+    port: 18080
+
+hello:
+  controller:
+    path: "/hello"
+
+hello.service.greeting:
+  value: "say hi from service"
+  property: "UN"
+
+hello.config.greeting:
+  de: "Hallo"
+  en: "Hello"
+
