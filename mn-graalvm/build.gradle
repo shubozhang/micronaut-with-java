@@ -32,7 +32,7 @@ dependencies {
 
 
 application {
-    mainClass.set("com.sz.Application")
+    mainClass.set("com.sz.App")
 }
 
 java {

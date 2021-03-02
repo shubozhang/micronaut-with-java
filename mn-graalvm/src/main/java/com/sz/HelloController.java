@@ -8,6 +8,6 @@ public class HelloController {
 
     @Get("/")
     public String index() {
-        return "hello from GraalVM";
+        return "hello from Micronaut + GraalVM";
     }
 }
