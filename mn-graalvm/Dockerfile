@@ -1,4 +1,19 @@
-FROM adoptopenjdk/openjdk11-openj9:jdk-11.0.1.13-alpine-slim
-COPY build/libs/mn-graalvm-*-all.jar mn-graalvm.jar
+# this image is only used in building, not for runtime
+FROM ghcr.io/graalvm/graalvm-ce:latest as graalvm
+
+# gu = graal updater
+RUN gu install native-image
+
+COPY . /home/app/mn-graalvm
+WORKDIR /home/app/mn-graalvm
+
+RUN native-image --no-server -cp build/libs/mn-graalvm-*-all.jar
+
+FROM frolvlad/alpine-glibc:alpine-3.12
+RUN apk update && apk add libstdc++
+
+# No rest api, so no port to expose
 EXPOSE 8080
-CMD java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dcom.sun.management.jmxremote -noverify ${JAVA_OPTS} -jar mn-graalvm.jar
+
+COPY --from=graalvm /home/app/mn-graalvm/mn-graalvm /app/mn-graalvm
+ENTRYPOINT ["/app/mn-graalvm"]
