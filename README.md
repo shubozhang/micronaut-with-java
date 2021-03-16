@@ -1,4 +1,4 @@
-# micronaut-with-java
+# Micronaut with Java
 
 This is a POC repo that contains multi modules.
 
@@ -17,6 +17,19 @@ It is build from Micronaut template (Intellij or micronaut.io/launch) with
   
 * UI console (Kafka Development Environment): `localhost:3030`
 
+---
+
+## mn-graalvm
+
+
+
+---
+
+## mn-web
+
+
+
+---
 
 
 

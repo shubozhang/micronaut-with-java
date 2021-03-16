@@ -8,12 +8,29 @@ micronaut:
 hello:
   controller:
     path: "/hello"
+  service.greeting:
+    value: "say hi from service"
+    property: "UN"
+  config.greeting:
+    de: "Hallo"
+    en: "Hello"
 
-hello.service.greeting:
-  value: "say hi from service"
-  property: "UN"
+flyway:
+  datasources:
+    default:
+      enabled: true
+      clean-schema: false
+      url: ${PG_JDBC_URL:`jdbc:postgresql://localhost:15432/pg12`}
+      user: ${PG_USERNAME:pg12}
+      password: ${PG_PASSWORD:pg12}
+      schemas: mn
+      default-schema: mn
 
-hello.config.greeting:
-  de: "Hallo"
-  en: "Hello"
-
+#datasources:
+#  default:
+#    url: ${PG_JDBC_URL:`jdbc:postgresql://localhost:5432/pg12`}
+#    username: ${PG_USERNAME:pg12}
+#    password: ${PG_PASSWORD:pg12} # secret
+#    driver-class-name: org.postgresql.Driver
+#    schema-genenerate: NONE
+#    dialect: POSTGRES

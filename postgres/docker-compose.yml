@@ -1,0 +1,40 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: pg12
+    image: postgres:12
+    environment:
+      POSTGRES_USER: pg12
+      POSTGRES_PASSWORD: pg12
+      PGDATA: /data/postgres
+    # absolute path
+    volumes:
+      - postgres12:/Users/szhang/postgresql/pg12
+    ports:
+      - "5432:5432"
+    networks:
+      - pg12
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin12
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: a@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: a@gmail.com
+    volumes:
+      - pgadmin12:/Users/szhang/postgresql/.pgadmin12
+    ports:
+      - "7777:80"
+    networks:
+      - pg12
+    restart: unless-stopped
+
+networks:
+  pg12:
+    driver: bridge
+
+volumes:
+  postgres12:
+  pgadmin12:

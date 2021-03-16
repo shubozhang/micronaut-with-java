@@ -1,4 +1,4 @@
-# mn-web
+# Micronaut Web Application
 
 ### micronaut template via IDEA
 * version: 2.3.3

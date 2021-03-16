@@ -1,0 +1,51 @@
+{
+  "AttributeDefinitions": [
+    { "AttributeName": "Artist", "AttributeType": "S"},
+    { "AttributeName": "SongTitle", "AttributeType": "S"},
+    { "AttributeName": "AlbumTitle", "AttributeType": "S"},
+    { "AttributeName": "Upc", "AttributeType": "S"}
+  ],
+  "TableName": "Music",
+  "KeySchema": [
+    {
+      "KeyType": "HASH",
+      "AttributeName": "Artist"
+    },
+    {
+      "KeyType": "RANGE",
+      "AttributeName": "SongTitle"
+    }
+  ],
+  "LocalSecondaryIndexes": [
+    {
+      "IndexName": "lsi_album",
+      "KeySchema": [
+        { "AttributeName": "Artist", "KeyType": "HASH"},
+        { "AttributeName": "AlbumTitle", "KeyType": "RANGE"}
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      }
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 3,
+    "WriteCapacityUnits": 3
+  },
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "gsi_upc",
+      "KeySchema": [
+        { "AttributeName": "Upc", "KeyType": "HASH"}
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 3,
+        "WriteCapacityUnits": 3
+      }
+    }
+  ]
+}
+

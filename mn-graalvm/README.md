@@ -1,4 +1,4 @@
-# mn-graalvm
+# Micronaut Graalvm POC
 
 This is a POC to prove Micronaut + GraalVM in startup time and memory footprint.
 
