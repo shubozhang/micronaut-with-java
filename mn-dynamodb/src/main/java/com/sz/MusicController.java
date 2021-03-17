@@ -11,18 +11,19 @@ import io.micronaut.http.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import java.util.List;
 
 @Controller("/music")
 public class MusicController {
     private static final Logger log = LoggerFactory.getLogger(MusicController.class);
 
-    private final MusicDao musicDao;
-    private ObjectMapper mapper = new ObjectMapper();
+    @Inject
+    static MusicDao musicDao;
 
-    public MusicController(MusicDao musicDao) {
-        this.musicDao = musicDao;
-    }
+    @Inject
+    ObjectMapper mapper;
+
 
     @Get("{?music*}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -82,6 +83,4 @@ public class MusicController {
         musicDao.deleteItem(mapper.readValue(body, Music.class));
         return HttpResponse.ok();
     }
-
-
 }

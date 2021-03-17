@@ -24,10 +24,7 @@ public class MusicDao {
     private final Index lsiAlbum = DBMapper.getLSIAlbumTitle();
     private final Index gsiAlbum = DBMapper.getGSIUpc();
 
-    public Music getItem(Music music) {
-        Music item = mapper.load(music);
-        return item;
-    }
+    public Music getItem(Music music) { return mapper.load(music); }
 
     public void saveItem(Music music) {
         mapper.save(music);
@@ -38,7 +35,6 @@ public class MusicDao {
     }
 
     public List<Music> queryItemByLSI(Music music) throws JsonProcessingException {
-
         List<Music> musicList = new ArrayList<>();
         QuerySpec spec = new QuerySpec()
                 .withKeyConditionExpression("Artist = :v_artist and AlbumTitle = :v_title")
@@ -61,7 +57,6 @@ public class MusicDao {
     }
 
     public List<Music> queryItemByGSI(Music music) throws JsonProcessingException {
-
         List<Music> musicList = new ArrayList<>();
         QuerySpec spec = new QuerySpec()
                 .withKeyConditionExpression("Upc = :v_upc")

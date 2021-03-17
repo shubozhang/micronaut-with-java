@@ -12,24 +12,22 @@ import com.amazonaws.services.dynamodbv2.document.Index;
 import com.amazonaws.services.dynamodbv2.document.Table;
 
 public class DBMapper {
-
-    private static DynamoDBMapper mapper;
     private static final String TABLE_NAME = "Music";
-    private static final String LSI_ALBUM =  "lsi_album";
-    private static final String GSI_UPC = "gsi_upc";
-
+    private static final String LSI_ALBUM_INDEX_NAME =  "lsi_album";
+    private static final String GSI_UPC_INDEX_NAME = "gsi_upc";
     private static AmazonDynamoDB client;
+    private static DynamoDBMapper mapper;
+    private static Index lsi_album;
+    private static Index gsi_upc;
 
-    private static void setClient() {
+    static {
         AWSCredentialsProvider creds = new AWSCredentialsProvider() {
             @Override
             public AWSCredentials getCredentials() {
                 return new BasicAWSCredentials("local", "local");
             }
-
             @Override
-            public void refresh() {
-            }
+            public void refresh() { }
         };
 
         client = AmazonDynamoDBClientBuilder.standard()
@@ -37,33 +35,17 @@ public class DBMapper {
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://localhost:8000", "us-east-1"))
                 .build();
 
-    }
-
-
-    public static DynamoDBMapper getMapper(){
-        DynamoDBMapper mapper;
-        if (client == null) {
-            setClient();
-        }
         mapper = new DynamoDBMapper(client);
-        return mapper;
-    }
-
-    public static Index getLSIAlbumTitle() {
-        if (client == null) {
-            setClient();
-        }
         DynamoDB dynamoDb = new DynamoDB(client);
         Table table = dynamoDb.getTable(TABLE_NAME);
-        return table.getIndex(LSI_ALBUM);
+        lsi_album = table.getIndex(LSI_ALBUM_INDEX_NAME);
+        gsi_upc = table.getIndex(GSI_UPC_INDEX_NAME);
+
     }
 
-    public static Index getGSIUpc() {
-        if (client == null) {
-            setClient();
-        }
-        DynamoDB dynamoDb = new DynamoDB(client);
-        Table table = dynamoDb.getTable(TABLE_NAME);
-        return table.getIndex(GSI_UPC);
-    }
+    public static DynamoDBMapper getMapper(){ return mapper; }
+
+    public static Index getLSIAlbumTitle() { return lsi_album; }
+
+    public static Index getGSIUpc() { return gsi_upc; }
 }
