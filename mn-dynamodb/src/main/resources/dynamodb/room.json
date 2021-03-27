@@ -1,0 +1,16 @@
+{
+  "AttributeDefinitions": [
+    { "AttributeName": "RoomId", "AttributeType": "S"}
+  ],
+  "TableName": "Room",
+  "KeySchema": [
+    {
+      "KeyType": "HASH",
+      "AttributeName": "RoomId"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 3,
+    "WriteCapacityUnits": 3
+  }
+}

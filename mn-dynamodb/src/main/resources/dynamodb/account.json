@@ -1,0 +1,16 @@
+{
+  "AttributeDefinitions": [
+    { "AttributeName": "AccountId", "AttributeType": "S"}
+  ],
+  "TableName": "Account",
+  "KeySchema": [
+    {
+      "KeyType": "HASH",
+      "AttributeName": "AccountId"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 3,
+    "WriteCapacityUnits": 3
+  }
+}

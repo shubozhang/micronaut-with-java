@@ -1,8 +1,8 @@
-package com.sz;
+package com.sz.music;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sz.model.Music;
+import com.sz.music.model.Music;
 import com.sz.utils.ItemError;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;

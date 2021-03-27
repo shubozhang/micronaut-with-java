@@ -1,4 +1,4 @@
-package com.sz;
+package com.sz.music;
 
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
@@ -11,7 +11,8 @@ import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.sz.model.Music;
+import com.sz.DBMapper;
+import com.sz.music.model.Music;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;

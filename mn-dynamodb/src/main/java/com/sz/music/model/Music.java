@@ -1,4 +1,4 @@
-package com.sz.model;
+package com.sz.music.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import lombok.AllArgsConstructor;

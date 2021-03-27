@@ -29,6 +29,12 @@ dependencies {
     implementation("com.amazonaws:aws-java-sdk-dynamodb:1.11.969")
     implementation 'org.projectlombok:lombok:1.18.16'
     runtimeOnly("ch.qos.logback:logback-classic")
+
+    testCompile "io.micronaut.test:micronaut-test-junit5:1.1.5"
+    testCompile "org.mockito:mockito-junit-jupiter:2.22.0"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.1.0"
+    testImplementation("org.assertj:assertj-core:3.19.0")
+
 }
 
 
