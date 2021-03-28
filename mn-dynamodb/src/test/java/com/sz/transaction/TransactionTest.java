@@ -53,7 +53,7 @@ public class TransactionTest {
     }
 
     @Test
-    public void testTransaction() {
+    public void testCreateOrder() {
         Order order = new Order();
         order.setOrderId("1");
         order.setAccountId("A1");
@@ -71,6 +71,7 @@ public class TransactionTest {
         assertTrue(resRoom.getRoomId().equals(order.getRoomId())
                 && resRoom.getAvailable().equals("NO"));
 
+        // clean up
         deleteOrder(order);
     }
 
@@ -96,6 +97,29 @@ public class TransactionTest {
         String res = createOrder(order);
         assertTrue(res.contains("Transaction Canceled, implies a client issue, fix before retrying. Error: "));
         assertTrue(res.contains("[None, ConditionalCheckFailed, None]"));
+    }
+
+    @Test
+    public void testAllInvalidException() {
+        Order order = new Order();
+        order.setOrderId("2");
+        order.setAccountId("A2");
+        order.setRoomId("R2");
+
+        String res = createOrder(order);
+        assertTrue(res.equals("SUCCESS"));
+
+        Order order2 = new Order();
+        order2.setOrderId("2");
+        order2.setAccountId("NONE");
+        order2.setRoomId("NONE");
+
+        String res2 = createOrder(order2);
+        assertTrue(res2.contains("Transaction Canceled, implies a client issue, fix before retrying. Error: "));
+        assertTrue(res2.contains("[ConditionalCheckFailed, ConditionalCheckFailed, ConditionalCheckFailed]"));
+
+        // clean up
+        deleteOrder(order);
     }
 
     @Test
