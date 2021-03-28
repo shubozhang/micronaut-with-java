@@ -42,8 +42,8 @@ So transaction is not a deal breaker for Dynamodb anymore.
     * Return a consistent, isolated snapshot of all times.
     * Consumes 2 RCUs for every 4 KB of data.
     * Error Handling for Reading
-        * When a TransactGetItems request conflicts with an ongoing TransactWriteItems operation on one or more items in the TransactGetItems request. 
-          In this case, the request fails with a TransactionCanceledException. 
+        * When a TransactGetItems request conflicts with an ongoing TransactWriteItems operation on one or more 
+          items in the TransactGetItems request. In this case, the request fails with a TransactionCanceledException. 
         * When there is insufficient provisioned capacity for the transaction to be completed. 
         * When there is a user error, such as an invalid data format.
 
@@ -105,8 +105,8 @@ read-capacity units (RCUs) that these retries consume. The same is true if you a
 * Don't group operations together in a transaction if it's not necessary. For example,if a single transaction with 10 operations 
   can be broken up into multiple transactions without compromising the application correctness, we recommend splitting up the transaction. 
   Simpler transactions improve throughput and are more likely to succeed.
-* Multiple transactions updating the same items simultaneously can cause conflicts that cancel the transactions. We recommend following 
-  DynamoDB best practices for data modeling to minimize such conflicts.
+* Multiple transactions updating the same items simultaneously can cause conflicts that cancel the transactions. 
+  We recommend following DynamoDB best practices for data modeling to minimize such conflicts.
 * If a set of attributes is of ten updated across multiple items as part of a single transaction,consider grouping the attributes 
   into a single item to reduce the scope of the transaction.
 * Avoid using transactions for ingesting data in bulk. For bulk writes, it is better to use BatchWriteItem.

@@ -2,6 +2,7 @@ package com.sz.transaction.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -9,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @DynamoDBTable(tableName="Account")
 @ToString
+@Data
 public class Account {
     private String accountId;
 
